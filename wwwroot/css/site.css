@@ -20,3 +20,57 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+:root {
+  --background-color: #c2d6ff;
+  --text-color: #02457A;
+  --light-background: #eef1f9;
+  --dark-text: #001B48;
+}
+
+body {
+  background-color: var(--light-background);
+  color: var(--text-color);
+}
+
+.navbar-custom {
+  background-color: var(--text-color) !important;
+  color: #fff;
+}
+
+.navbar-custom .nav-link,
+.navbar-custom .btn {
+  color: #fff;
+}
+
+.navbar-custom .nav-link.active,
+.navbar-custom .btn.active {
+  background-color: #fff !important;
+  color: var(--text-color) !important;
+}
+
+/* Custom sidebar styles */
+.sidebar {
+  background-color: var(--text-color);
+  color: #fff;
+  border-radius: 1rem;
+  height: 98vh;
+  margin: 8px 0;
+  width: 80px;
+}
+.sidebar .nav-link,
+.sidebar .btn {
+  color: #fff;
+  font-size: 10px;
+}
+.sidebar .nav-link.active,
+.sidebar .btn.active {
+  background-color: #fff;
+  color: var(--text-color) !important;
+}
+.sidebar .icon {
+  width: 32px;
+  height: 32px;
+  display: block;
+  margin: 0 auto;
+}
