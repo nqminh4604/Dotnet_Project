@@ -23,10 +23,10 @@
     </script>
     @RenderSection("Styles", required: false)
 </head>
-<body class="bg-light-background min-h-screen">
-    <div class="flex min-h-screen">
+<body class="bg-light-background">
+    <div class="flex">
         @await Html.PartialAsync("_Navbar")
-        <main class="flex-1 p-4">
+        <main class="flex-1">
             @RenderBody()
         </main>
     </div>

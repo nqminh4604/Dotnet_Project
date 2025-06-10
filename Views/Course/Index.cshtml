@@ -5,9 +5,9 @@
     var selectedCourse = Model.SelectedCourse;
     var chapters = Model.Chapters;
 }
-<div class="h-screen flex ml-1">
+<div class="flex ml-1">
     <!-- Left sidebar -->
-    <div class="m-[8px] bg-white h-[98vh] w-[28vw] rounded-xl flex flex-col p-4">
+    <div class="m-[8px] bg-white h-[98vh] w-[27vw] rounded-xl flex flex-col p-4">
         <h1 class="text-3xl font-semibold text-text-color">Courses</h1>
         <form asp-action="Index" method="get" class="relative">
             <input
@@ -39,7 +39,7 @@
                         <input type="hidden" name="searchTerm" value="@Model.SearchTerm" />
                         <button type="submit" style="all:unset;width:100%;display:block;cursor:pointer;">
                             <div class="p-3 relative flex items-center h-30 mt-3 border-2 rounded-xl transition-all duration-200 @(isSelected ? "border-text-color shadow-lg bg-white/5" : "border-transparent hover:border-text-color hover:shadow-lg hover:bg-white/5")">
-                                <img src="/img/ava@((course.i % 3) + 1).png" class="w-20 h-20 rounded-xl" alt="avatarCourse" />
+                                <img src="/images/ava@((course.i % 3) + 1).png" class="w-20 h-20 rounded-xl" alt="avatarCourse" />
                                 <div class="ml-3 relative">
                                     <p class="text-gray-400 font-semibold text-[15px]">@course.c.Code</p>
                                     <p class="text-text-color font-bold text-[18px] mt-2">@course.c.Name</p>
@@ -54,19 +54,21 @@
             }
         </div>
     </div>
+
+
     <div class="m-[8px] ml-1 bg-white h-[98vh] w-[64vw] rounded-xl flex flex-col p-8">
         @if (selectedCourse != null)
         {
-            <div class="flex relative">
+            <div class="flex relative ">
                 <div>
                     <div class="flex">
-                        <img src="/img/ava@((displayCourses.FindIndex(c => c.Id == selectedCourse.Id) % 3) + 1).png" class="w-48 h-48 rounded-xl object-cover mb-6" alt="Course avatar" />
+                        <img src="/images/ava@((displayCourses.FindIndex(c => c.Id == selectedCourse.Id) % 3) + 1).png" class="w-48 h-48 rounded-xl object-cover mb-6" alt="Course avatar" />
                         <div class="ml-8 w-1/2">
                             <p class="text-gray-400 font-semibold text-2xl mb-2">@selectedCourse.Code</p>
                             <h2 class="text-[40px] font-bold text-text-color mb-2">@selectedCourse.Name</h2>
                         </div>
                         <div class="flex pt-14 absolute justify-end right-8">
-                            <a href="/Topics/@selectedCourse.Id" class="bg-text-color text-white rounded-xl px-16 py-4 text-2xl font-bold border-2 border-text-color transition-colors duration-300 hover:bg-white hover:text-text-color">Join</a>
+                            <a asp-controller="Chapter" asp-action="Index" asp-route-id="@selectedCourse.Id" class="bg-text-color text-white rounded-xl px-16 py-4 text-2xl font-bold border-2 border-text-color transition-colors duration-300 hover:bg-white hover:text-text-color">Join</a>
                         </div>
                     </div>
                     <p class="mt-5">@selectedCourse.Description</p>
@@ -78,15 +80,16 @@
                         }
                         else
                         {
-                            <div class="bg-background-color rounded-xl grid grid-cols-2 gap-x-8 gap-y-4 p-4">
-                                @foreach (var topic in chapters)
+                            <div class="bg-background-color rounded-xl grid grid-cols-2 gap-x-8 gap-y-4 p-4 h-[40vh] overflow-auto">
+                                @for (int i = 0; i < chapters.Count; i++)
                                 {
-                                    <div class="flex gap-2 text-text-color">
-                                        <h1 class="text-4xl bg-white pl-7 pr-7 pt-5 rounded-xl font-bold">@topic.Id</h1>
-                                        <div class="bg-white p-3 pl-5 pr-5 rounded-xl w-full">
-                                            <h1 class="text-xl font-semibold mb-2">@topic.Title</h1>
+                                    var chapter = chapters[i];
+                                    <div class="flex gap-2 text-text-color items-center">
+                                        <h1 class="text-4xl bg-white px-7 py-5 rounded-xl font-bold">@((i + 1))</h1>
+                                        <div class="bg-white p-3 px-5 rounded-xl w-full">
+                                            <h1 class="text-xl font-semibold mb-2">@chapter.Title</h1>
                                             <div class="flex justify-between">
-                                                <p>Lessons: @topic.Lessons.Count</p>
+                                                <p>Lessons: @chapter.Lessons.Count</p>
                                             </div>
                                         </div>
                                     </div>

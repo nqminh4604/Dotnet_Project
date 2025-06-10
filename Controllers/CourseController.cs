@@ -3,6 +3,7 @@ using Dotnet_Project.Data;
 using Dotnet_Project.Models;
 using Dotnet_Project.ViewModels;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Dotnet_Project.Controllers
 {
@@ -30,7 +31,9 @@ namespace Dotnet_Project.Controllers
                 selectedCourse = _context.Courses.FirstOrDefault(c => c.Id == selectedCourseId.Value);
                 if (selectedCourse != null)
                 {
-                    chapters = _context.Chapters.Where(ch => ch.CourseId == selectedCourse.Id)
+                    chapters = _context.Chapters
+                        .Include(ch => ch.Lessons)
+                        .Where(ch => ch.CourseId == selectedCourse.Id)
                         .OrderBy(ch => ch.Id).ToList();
                 }
             }

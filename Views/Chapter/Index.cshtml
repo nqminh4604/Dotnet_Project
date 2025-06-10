@@ -1,5 +1,166 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Dotnet_Project.ViewModels.ChapterIndexViewModel
+@using System.Text.Json
 @{
+    ViewData["Title"] = Model.Course?.Name ?? "Chapters";
+    var course = Model.Course;
+    var chapters = Model.Chapters;
+    var selectedLesson = Model.SelectedLesson;
+    var selectedExercise = Model.SelectedExercise;
+    var exerciseResult = TempData["ExerciseResult"] as string;
+    var openChapterIndex = Model.OpenChapterIndex;
 }
+<!-- Force correct font for Material Symbols icons -->
+<style>
+.material-symbols-outlined {
+    font-family: 'Material Symbols Outlined', sans-serif !important;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+</style>
+<div class="h-screen flex">
+    <div class="m-[8px] bg-white h-[98vh] w-[28vw] rounded-xl flex flex-col p-4">
+        <div class="flex justify-between items-center mb-5">
+            <div class="flex-1">
+                @if (course != null)
+                {
+                    <h1 class="text-lg font-semibold text-gray-500">@course.Code</h1>
+                    <h1 class="text-2xl font-semibold text-text-color">@course.Name</h1>
+                }
+            </div>
+            <a asp-controller="Course" asp-action="Index" class="mb-4 p-1 rounded-full transition-all duration-200 hover:bg-red-50 hover:shadow-sm" style="cursor:pointer;">
+                <span class="material-symbols-outlined text-red-500 hover:text-red-600 transition-colors duration-200 transform hover:scale-105">close</span>
+            </a>
+        </div>
+        <div class="mt-3 overflow-y-auto flex-1 overflow-x-hidden [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+            @for (int i = 0; i < chapters.Count; i++)
+            {
+                var topic = chapters[i];
+                var isOpen = openChapterIndex == i;
+                <div class="bg-white rounded-xl border-2 border-text-color mb-2">
+                    <div class="flex justify-between items-center p-3 rounded-xl cursor-pointer" onclick="toggleChapter(@i)" style="cursor:pointer;">
+                        <div class="flex items-center">
+                            <h3 class="font-medium text-text-color">Chapter @(i + 1) : @topic.Title</h3>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-500 transition-transform">@(isOpen ? "expand_less" : "expand_more")</span>
+                    </div>
+                    <div class="px-4 pb-4 @(isOpen ? "block" : "hidden")" id="chapter-@i">
+                        <div class="pt-2 border-t-2 border-text-color">
+                            @{
+                                var lessonList = topic.Lessons.ToList();
+                            }
+                            @for (int j = 0; j < lessonList.Count; j++)
+                            {
+                                var lesson = lessonList[j];
+                                var isSelected = selectedLesson != null && selectedLesson.Id == lesson.Id;
+                                <div class="p-3 mb-2 ml-2 rounded-lg cursor-pointer @(isSelected ? "bg-text-color" : "hover:bg-light-background")" onclick="selectLesson(@lesson.Id, @i)" style="cursor:pointer;">
+                                    <h3 class="font-medium text-text-color @(isSelected ? "text-white" : "text-text-color")">Lesson @(j + 1): @lesson.Title</h3>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="m-[8px] ml-1 h-[98vh] w-[70vw] flex flex-col ">
+        @if (selectedLesson != null)
+        {
+            <div class="h-[10vh] mb-2 bg-white rounded-xl flex">
+                @{
+                    var exerciseList = selectedLesson.Exercises.ToList();
+                }
+                @for (int i = 0; i < exerciseList.Count; i++)
+                {
+                    var exe = exerciseList[i];
+                    var isActive = selectedExercise != null && selectedExercise.Id == exe.Id;
+                    <button class="relative m-2 flex justify-center items-center rounded-xl w-[65px] h-[65px] border-2 @(isActive ? "border-background-color bg-light-background" : "border-gray-300 bg-white") transition-all duration-200 hover:border-blue-300 hover:bg-blue-50 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-200" onclick="selectExercise(@exe.Id, @openChapterIndex);event.preventDefault();" style="cursor:pointer;">
+                        <h1 class="font-bold text-2xl @(isActive ? "text-text-color" : "text-gray-700")">@(i + 1)</h1>
+                    </button>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="flex-1 flex items-center justify-center bg-white rounded-xl">
+                <div class="text-xl text-gray-500">
+                    Select a lesson to begin
+                </div>
+            </div>
+        }
+        <div class="h-[90vh] bg-white rounded-xl">
+            @if (selectedLesson != null)
+            {
+                if (selectedExercise != null)
+                {
+                    @if (!string.IsNullOrEmpty(exerciseResult))
+                    {
+                        <div class="mb-4 p-3 rounded-lg @(exerciseResult == "Correct!" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700")">@exerciseResult</div>
+                    }
+                    <form method="post" asp-action="SubmitExercise" class="p-6 border border-gray-200 rounded-lg shadow-sm">
+                        <h3 class="font-medium text-xl mb-4 text-gray-800">@selectedExercise.Question</h3>
+                        <div class="space-y-3 mb-6">
+                            @if (selectedExercise.IsMultipleChoice)
+                            {
+                                @foreach (var option in selectedExercise.Options)
+                                {
+                                    <div class="flex items-center mb-2">
+                                        <input type="radio" id="ex-@selectedExercise.Id-opt-@option.Id" name="selectedOptionId" value="@option.Id" class="mr-3" required />
+                                        <label for="ex-@selectedExercise.Id-opt-@option.Id" class="flex items-center space-x-3 cursor-pointer w-full py-2 px-3 rounded-lg transition-all duration-200 hover:bg-gray-50">
+                                            <span class="text-gray-700">@option.Content</span>
+                                        </label>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <input type="text" name="textAnswer" class="w-full border rounded px-3 py-2" placeholder="Type your answer..." required />
+                            }
+                        </div>
+                        <input type="hidden" name="exerciseId" value="@selectedExercise.Id" />
+                        <input type="hidden" name="openChapterIndex" value="@openChapterIndex" />
+                        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">Check</button>
+                    </form>
+                }
+                else
+                {
+                    <div class="h-full flex items-center justify-center">
+                        <p class="text-gray-500">
+                            @(selectedLesson.Exercises.Count == 0 ? "No exercises available" : "Please select an exercise")
+                        </p>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="h-full flex items-center justify-center">
+                    <p class="text-gray-500">Select a lesson to begin</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<script>
+    function toggleChapter(idx) {
+        const el = document.getElementById('chapter-' + idx);
+        if (el) {
+            el.classList.toggle('hidden');
+            el.classList.toggle('block');
+        }
+    }
+    function selectLesson(lessonId, openChapterIndex) {
+        window.location.href = '?selectedLessonId=' + lessonId + '&openChapterIndex=' + openChapterIndex;
+    }
+    function selectExercise(exerciseId, openChapterIndex) {
+        const lessonId = '@(selectedLesson?.Id)';
+        window.location.href = '?selectedLessonId=' + lessonId + '&selectedExerciseId=' + exerciseId + '&openChapterIndex=' + openChapterIndex;
+    }
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
