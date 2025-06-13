@@ -1,0 +1,32 @@
+@model Dotnet_Project.Models.User
+@{
+    ViewData["Title"] = "My Profile";
+}
+<div class="max-w-2xl mx-auto mt-10 p-8 bg-white rounded-xl shadow-md">
+    <h1 class="text-3xl font-bold mb-6 text-text-color">My Profile</h1>
+    <dl class="divide-y divide-gray-200">
+        <div class="py-4 flex justify-between">
+            <dt class="font-semibold text-gray-700">Full Name:</dt>
+            <dd class="text-gray-900">@Model.FullName</dd>
+        </div>
+        <div class="py-4 flex justify-between">
+            <dt class="font-semibold text-gray-700">Username:</dt>
+            <dd class="text-gray-900">@Model.UserName</dd>
+        </div>
+        <div class="py-4 flex justify-between">
+            <dt class="font-semibold text-gray-700">Email:</dt>
+            <dd class="text-gray-900">@Model.Email</dd>
+        </div>
+        <div class="py-4 flex justify-between">
+            <dt class="font-semibold text-gray-700">Role:</dt>
+            <dd class="text-gray-900">@Model.Role</dd>
+        </div>
+        <div class="py-4 flex justify-between">
+            <dt class="font-semibold text-gray-700">Created At:</dt>
+            <dd class="text-gray-900">@Model.CreatedAt.ToString("yyyy-MM-dd")</dd>
+        </div>
+    </dl>
+    <div class="mt-8 flex justify-end">
+        <a asp-action="Edit" class="btn btn-primary bg-text-color text-white px-4 py-2 rounded">Edit Profile</a>
+    </div>
+</div>

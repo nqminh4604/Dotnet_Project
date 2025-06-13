@@ -7,10 +7,9 @@ namespace Dotnet_Project.Models
         public long Id { get; set; }
 
         [Required]
-        public string Question { get; set; }
+        public string Question { get; set; } = string.Empty;
 
-        [Required]
-        public string Answer { get; set; }
+        public string? Answer { get; set; } // Allow null
 
         [Required]
         public bool IsMultipleChoice { get; set; }
@@ -27,7 +26,5 @@ namespace Dotnet_Project.Models
         public virtual ICollection<Option> Options { get; set; } = new List<Option>();
 
         public virtual ICollection<Submission> Submissions { get; set; } = new List<Submission>();
-
-
     }
 }

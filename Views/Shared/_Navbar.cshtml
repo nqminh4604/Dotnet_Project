@@ -6,7 +6,7 @@
     var currentPath = Context.Request.Path.Value?.ToLower();
     Func<string, string> NavClass = path => currentPath == path.ToLower() ? "bg-white text-text-color font-bold" : "hover:bg-white/10 text-white";
 }
-<div class="flex flex-col items-center p-2 bg-text-color rounded-xl h-[98vh] m-2 w-[80px]">
+<div class="flex flex-col items-center p-2 bg-text-color rounded-xl h-[96vh] m-2 w-[80px]">
     <a asp-controller="User" asp-action="Index" class="mb-4 flex flex-col items-center p-2 w-[67px] rounded-xl transition-all @NavClass("/user/index")">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a8.25 8.25 0 1115 0v.41a.34.34 0 01-.34.34H4.84a.34.34 0 01-.34-.34v-.41z" />

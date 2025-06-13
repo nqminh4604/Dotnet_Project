@@ -1,0 +1,27 @@
+@model Dotnet_Project.Controllers.EditProfileViewModel
+@{
+    ViewData["Title"] = "Edit Profile";
+}
+<div class="max-w-xl mx-auto mt-10 p-8 bg-white rounded-xl shadow-md">
+    <h1 class="text-2xl font-bold mb-6 text-text-color">Edit Profile</h1>
+    <form asp-action="Edit" method="post" class="space-y-6">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger mb-4" })
+        <div>
+            <label asp-for="FullName" class="block font-semibold text-gray-700">Full Name</label>
+            <input asp-for="FullName" class="form-control w-full mt-1 border rounded px-3 py-2" />
+            <span asp-validation-for="FullName" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="Email" class="block font-semibold text-gray-700">Email</label>
+            <input asp-for="Email" class="form-control w-full mt-1 border rounded px-3 py-2" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="flex justify-end gap-2">
+            <a asp-action="Index" class="btn btn-secondary px-4 py-2 rounded">Cancel</a>
+            <button type="submit" class="btn btn-primary bg-text-color text-white px-4 py-2 rounded">Save</button>
+        </div>
+    </form>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
