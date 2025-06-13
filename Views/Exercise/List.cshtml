@@ -34,10 +34,7 @@
                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded">
                                 Edit
                             </a>
-                            <a asp-controller="Exercise" asp-action="Delete" asp-route-id="@exercise.Id"
-                               class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">
-                                Delete
-                            </a>
+                            <button type="button" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded delete-btn" data-id="@exercise.Id" data-name="@exercise.Question">Delete</button>
                         </div>
                     </td>
                 </tr>
@@ -45,3 +42,37 @@
         </tbody>
     </table>
 </div>
+
+<!-- Delete Confirmation Modal -->
+<div id="deleteModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
+    <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-md text-center">
+        <h2 class="text-xl font-bold mb-4">Confirm Delete</h2>
+        <p class="mb-6">Are you sure you want to delete <span id="modalExerciseName" class="font-semibold"></span>?</p>
+        <div class="flex justify-center gap-4">
+            <button id="cancelDeleteBtn" class="bg-gray-400 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">Cancel</button>
+            <a id="confirmDeleteBtn" href="#" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    document.querySelectorAll('.delete-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var exerciseId = this.getAttribute('data-id');
+            var exerciseName = this.getAttribute('data-name');
+            document.getElementById('modalExerciseName').textContent = exerciseName;
+            document.getElementById('confirmDeleteBtn').setAttribute('href', '/Exercise/Delete/' + exerciseId);
+            document.getElementById('deleteModal').classList.remove('hidden');
+        });
+    });
+    document.getElementById('cancelDeleteBtn').addEventListener('click', function() {
+        document.getElementById('deleteModal').classList.add('hidden');
+    });
+    document.getElementById('deleteModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.classList.add('hidden');
+        }
+    });
+</script>
+}

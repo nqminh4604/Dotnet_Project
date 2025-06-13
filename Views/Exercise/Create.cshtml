@@ -42,7 +42,6 @@
             document.querySelectorAll('#options-list .option-item').forEach(function(item, idx) {
                 item.querySelector('input[name$=".Content"]').setAttribute('name', `Options[${idx}].Content`);
                 item.querySelector('input[type=checkbox][name$=".IsCorrect"]').setAttribute('name', `Options[${idx}].IsCorrect`);
-                item.querySelector('input[type=hidden][name$=".IsCorrect"]').setAttribute('name', `Options[${idx}].IsCorrect`);
             });
         }
         function addOption(content = '', isCorrect = false) {
@@ -52,11 +51,14 @@
             div.innerHTML = `
                 <input type="text" class="border rounded px-2 py-1" name="Options[${idx}].Content" placeholder="Option content" value="${content}" required />
                 <label class="flex items-center">
-                    <input type="hidden" name="Options[${idx}].IsCorrect" value="false" />
-                    <input type="checkbox" name="Options[${idx}].IsCorrect" value="true" ${isCorrect ? 'checked' : ''}/> Is Correct
+                    <input type="checkbox" name="Options[${idx}].IsCorrect" value="true" ${isCorrect ? 'checked' : ''} /> Is Correct
                 </label>
                 <button type="button" class="remove-option-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">Remove</button>
             `;
+            const checkbox = div.querySelector('input[type=checkbox][name$=".IsCorrect"]');
+            if (checkbox) {
+                checkbox.checked = !!isCorrect;
+            }
             div.querySelector('.remove-option-btn').onclick = function() {
                 div.remove();
                 updateOptionIndexes();

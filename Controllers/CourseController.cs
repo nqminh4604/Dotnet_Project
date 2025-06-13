@@ -94,5 +94,15 @@ namespace Dotnet_Project.Controllers
             }
             return View(course);
         }
+
+        public IActionResult Delete(long id)
+        {
+            var course = _context.Courses.Find(id);
+            if (course == null)
+                return NotFound();
+            _context.Courses.Remove(course);
+            _context.SaveChanges();
+            return RedirectToAction("List");
+        }
     }
 }
