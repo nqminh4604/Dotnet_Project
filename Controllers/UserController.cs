@@ -1,71 +1,84 @@
-using Microsoft.AspNetCore.Mvc;
-using Dotnet_Project.Data;
+
 using Dotnet_Project.Models;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Dotnet_Project.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
-        private readonly DotnetProjectDbContext _context;
-        public UserController(DotnetProjectDbContext context)
+        private readonly UserManager<User> _userManager;
+
+        public UserController(UserManager<User> userManager)
         {
-            _context = context;
+            _userManager = userManager;
         }
 
-        public IActionResult List()
+        public async Task<IActionResult> Index()
         {
-            var users = _context.Users.ToList();
-            return View(users);
-        }
-
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create(User user)
-        {
-            if (ModelState.IsValid)
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
             {
-                _context.Users.Add(user);
-                _context.SaveChanges();
-                return RedirectToAction("List");
+                return RedirectToAction("Login", "Account");
             }
             return View(user);
         }
 
-        public IActionResult Edit(long id)
+        [HttpGet]
+        public async Task<IActionResult> Edit()
         {
-            var user = _context.Users.Find(id);
+            var user = await _userManager.GetUserAsync(User);
             if (user == null)
-                return NotFound();
-            return View(user);
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            var model = new EditProfileViewModel
+            {
+                Email = user.Email,
+                FullName = user.FullName
+            };
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(User user)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Users.Update(user);
-                _context.SaveChanges();
-                return RedirectToAction("List");
-            }
-            return View(user);
-        }
 
-        public IActionResult Delete(long id)
+        public async Task<IActionResult> Edit(EditProfileViewModel model)
         {
-            var user = _context.Users.Find(id);
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var user = await _userManager.GetUserAsync(User);
             if (user == null)
-                return NotFound();
-            _context.Users.Remove(user);
-            _context.SaveChanges();
-            return RedirectToAction("List");
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            user.Email = model.Email;
+            user.FullName = model.FullName;
+            var result = await _userManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index");
+            }
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+            return View(model);
         }
+    }
+
+    public class EditProfileViewModel
+    {
+        [System.ComponentModel.DataAnnotations.Required]
+        [System.ComponentModel.DataAnnotations.EmailAddress]
+        public string Email { get; set; } = string.Empty;
+
+        [System.ComponentModel.DataAnnotations.Required]
+        [System.ComponentModel.DataAnnotations.StringLength(100, MinimumLength = 2)]
+        public string FullName { get; set; } = string.Empty;
     }
 }

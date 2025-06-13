@@ -7,6 +7,8 @@
     <title>@ViewData["Title"] - Dotnet_Project</title>
     <link rel="stylesheet" href="~/css/site.css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
     <script>
         tailwind.config = {
             theme: {
@@ -25,7 +27,10 @@
 </head>
 <body class="bg-light-background">
     <div class="flex">
-        @await Html.PartialAsync("_Navbar")
+        @if (ViewBag.HideNavbar == null || ViewBag.HideNavbar == false)
+        {
+            @await Html.PartialAsync("_Navbar")
+        }
         <main class="flex-1">
             @RenderBody()
         </main>

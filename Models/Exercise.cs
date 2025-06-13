@@ -7,9 +7,10 @@ namespace Dotnet_Project.Models
         public long Id { get; set; }
 
         [Required]
-        public string Question { get; set; }
+        public string Question { get; set; } = string.Empty;
 
         public string? Answer { get; set; }
+
 
         [Required]
         public bool IsMultipleChoice { get; set; }
