@@ -1,0 +1,26 @@
+@model Dotnet_Project.Models.Chapter
+@{
+    ViewData["Title"] = "Edit Chapter";
+    Layout = "../Shared/_AdminLayout.cshtml";
+}
+<h1 class="text-2xl font-bold text-text-color mb-4">Edit Chapter</h1>
+<form asp-action="Edit" method="post" class="max-w-lg bg-white p-6 rounded shadow">
+    <input type="hidden" asp-for="Id" />
+    <div class="mb-4">
+        <label asp-for="Title" class="block font-semibold mb-1">Title</label>
+        <input asp-for="Title" class="w-full border rounded px-3 py-2" />
+        <span asp-validation-for="Title" class="text-red-500 text-sm"></span>
+    </div>
+    <div class="mb-4">
+        <label asp-for="CourseId" class="block font-semibold mb-1">Course</label>
+        <select asp-for="CourseId" class="w-full border rounded px-3 py-2" asp-items="ViewBag.CourseId"></select>
+        <span asp-validation-for="CourseId" class="text-red-500 text-sm"></span>
+    </div>
+    <div class="flex justify-end gap-2">
+        <a asp-action="List" class="bg-gray-400 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">Cancel</a>
+        <button type="submit" class="bg-text-color hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Save</button>
+    </div>
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,38 @@
+﻿@* Main layout for the application using Tailwind and your color palette *@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - Dotnet_Project</title>
+	<link rel="stylesheet" href="~/css/site.css" />
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					colors: {
+						'background-color': '#c2d6ff',
+						'text-color': '#02457A',
+						'light-background': '#eef1f9',
+						'dark-text': '#001B48',
+					}
+				}
+			}
+		}
+	</script>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	@RenderSection("Styles", required: false)
+</head>
+<body class="bg-light-background">
+	<div class="flex">
+		@await Html.PartialAsync("_AdminNavbar")
+		<main class="flex-1 m-2">
+			<div class="flex-1 h-full p-5 bg-white rounded-xl ">
+				@RenderBody()
+			</div>
+		</main>
+	</div>
+	@RenderSection("Scripts", required: false)
+</body>
+</html>

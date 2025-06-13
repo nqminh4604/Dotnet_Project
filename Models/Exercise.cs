@@ -9,8 +9,7 @@ namespace Dotnet_Project.Models
         [Required]
         public string Question { get; set; }
 
-        [Required]
-        public string Answer { get; set; }
+        public string? Answer { get; set; }
 
         [Required]
         public bool IsMultipleChoice { get; set; }
@@ -20,14 +19,13 @@ namespace Dotnet_Project.Models
 
         public DateTime? UpdatedAt { get; set; }
 
+        [Required]
         public long LessonId { get; set; }
 
-        public virtual Lesson Lesson { get; set; } = null!;
+        public virtual Lesson? Lesson { get; set; }
 
         public virtual ICollection<Option> Options { get; set; } = new List<Option>();
 
         public virtual ICollection<Submission> Submissions { get; set; } = new List<Submission>();
-
-
     }
 }

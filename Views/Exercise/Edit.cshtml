@@ -1,0 +1,102 @@
+@using Newtonsoft.Json  
+@model Dotnet_Project.Models.Exercise  
+@{  
+    ViewData["Title"] = "Edit Exercise";  
+    Layout = "../Shared/_AdminLayout.cshtml";  
+}  
+<h1 class="text-2xl font-bold text-text-color mb-4">Edit Exercise</h1>  
+<form asp-action="Edit" method="post" class="max-w-lg bg-white p-6 rounded shadow">  
+    <input type="hidden" asp-for="Id" />  
+    <div class="mb-4">  
+        <label asp-for="Question" class="block font-semibold mb-1">Question</label>  
+        <input asp-for="Question" class="w-full border rounded px-3 py-2" />  
+        <span asp-validation-for="Question" class="text-red-500 text-sm"></span>  
+    </div>  
+    <div class="mb-4" id="answer-field">  
+        <label asp-for="Answer" class="block font-semibold mb-1">Answer</label>  
+        <input asp-for="Answer" class="w-full border rounded px-3 py-2" />  
+        <span asp-validation-for="Answer" class="text-red-500 text-sm"></span>  
+    </div>  
+    <div class="mb-4">  
+        <label asp-for="IsMultipleChoice" class="block font-semibold mb-1">Is Multiple Choice</label>  
+        <input asp-for="IsMultipleChoice" type="checkbox" class="ml-2" id="is-mc-checkbox" />  
+        <span asp-validation-for="IsMultipleChoice" class="text-red-500 text-sm"></span>  
+    </div>  
+    <div class="mb-4" id="options-section" style="display:none">  
+        <label class="block font-semibold mb-1">Options</label>  
+        <div id="options-list"></div>  
+        <button type="button" id="add-option-btn" class="mt-2 bg-blue-500 text-white px-2 py-1 rounded">Add Option</button>  
+    </div>  
+    <div class="mb-4">  
+        <label asp-for="LessonId" class="block font-semibold mb-1">Lesson</label>  
+        <select asp-for="LessonId" class="w-full border rounded px-3 py-2" asp-items="ViewBag.LessonId"></select>  
+        <span asp-validation-for="LessonId" class="text-red-500 text-sm"></span>  
+    </div>  
+    <div class="flex justify-end gap-2">  
+        <a asp-action="List" class="bg-gray-400 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">Cancel</a>  
+        <button type="submit" class="bg-text-color hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Save</button>  
+    </div>  
+</form>  
+@section Scripts {  
+    <partial name="_ValidationScriptsPartial" />  
+    <script>  
+        function updateOptionIndexes() {  
+            document.querySelectorAll('#options-list .option-item').forEach(function(item, idx) {  
+                item.querySelector('input[name$=".Content"]').setAttribute('name', `Options[${idx}].Content`);  
+                item.querySelector('input[type=checkbox][name$=".IsCorrect"]').setAttribute('name', `Options[${idx}].IsCorrect`);  
+            });  
+        }  
+        function addOption(content = '', isCorrect = false) {  
+            // Robust boolean conversion for isCorrect
+            if (typeof isCorrect === 'string') {
+                isCorrect = isCorrect.toLowerCase() === 'true' || isCorrect === '1';
+            } else {
+                isCorrect = !!isCorrect;
+            }
+            const idx = document.querySelectorAll('#options-list .option-item').length;  
+            const div = document.createElement('div');  
+            div.className = 'option-item flex items-center gap-2 mb-2';  
+            div.innerHTML = `  
+                <input type="text" class="border rounded px-2 py-1" name="Options[${idx}].Content" placeholder="Option content" value="${content}" required />  
+                <label class="flex items-center">  
+                    <input type="hidden" name="Options[${idx}].IsCorrect" value="false" />  
+                    <input type="checkbox" name="Options[${idx}].IsCorrect" value="true" ${isCorrect ? 'checked' : ''}/> Is Correct  
+                </label>  
+                <button type="button" class="remove-option-btn text-red-500">Remove</button>  
+            `;  
+            div.querySelector('.remove-option-btn').onclick = function() {  
+                div.remove();  
+                updateOptionIndexes();  
+            };  
+            document.getElementById('options-list').appendChild(div);  
+            updateOptionIndexes();  
+        }  
+        document.getElementById('is-mc-checkbox').addEventListener('change', function() {  
+            if (this.checked) {  
+                document.getElementById('options-section').style.display = '';  
+                document.getElementById('answer-field').style.display = 'none';  
+            } else {  
+                document.getElementById('options-section').style.display = 'none';  
+                document.getElementById('answer-field').style.display = '';  
+            }  
+        });  
+        document.getElementById('add-option-btn').addEventListener('click', function() {  
+            addOption();  
+        });  
+        // On page load, set correct visibility and load existing options if any  
+        window.addEventListener('DOMContentLoaded', function() {  
+            if (document.getElementById('is-mc-checkbox').checked) {  
+                document.getElementById('options-section').style.display = '';  
+                document.getElementById('answer-field').style.display = 'none';  
+            }  
+            // Load existing options from model if any  
+            var options = JSON.parse('@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(  
+                (Model.Options?.Select(o => new { o.Content, o.IsCorrect }) ?? Enumerable.Empty<object>()).ToList()))');  
+            if (Array.isArray(options) && options.length > 0) {  
+                options.forEach(function(opt) {  
+                    addOption(opt.Content, opt.IsCorrect);  
+                });  
+            }  
+        });  
+    </script>  
+}

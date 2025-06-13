@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dotnet_Project.Migrations
 {
     [DbContext(typeof(DotnetProjectDbContext))]
-    [Migration("20250519115732_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250613153755_MakeAnswerNullable")]
+    partial class MakeAnswerNullable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -83,7 +83,6 @@ namespace Dotnet_Project.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<string>("Answer")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
