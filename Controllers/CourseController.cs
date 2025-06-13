@@ -47,5 +47,52 @@ namespace Dotnet_Project.Controllers
             };
             return View(vm);
         }
+
+        public IActionResult List()
+        {
+            var courses = _context.Courses.ToList();
+            return View(courses);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Course course)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Courses.Add(course);
+                _context.SaveChanges();
+                return RedirectToAction("List");
+            }
+            return View(course);
+        }
+
+        public IActionResult Edit(long id)
+        {
+            var course = _context.Courses.Find(id);
+            if (course == null)
+            {
+                return NotFound();
+            }
+            return View(course);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Course course)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Courses.Update(course);
+                _context.SaveChanges();
+                return RedirectToAction("List");
+            }
+            return View(course);
+        }
     }
 }

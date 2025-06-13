@@ -1,3 +1,4 @@
+
 using Dotnet_Project.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -44,6 +45,7 @@ namespace Dotnet_Project.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+
         public async Task<IActionResult> Edit(EditProfileViewModel model)
         {
             if (!ModelState.IsValid)

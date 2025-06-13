@@ -1,0 +1,47 @@
+@model IEnumerable<Dotnet_Project.Models.Exercise>
+@{
+    ViewData["Title"] = "Exercise List";
+    Layout = "../Shared/_AdminLayout.cshtml";
+}
+<div class="flex justify-between items-center mb-4">
+    <h1 class="text-2xl font-bold text-text-color">Exercise List</h1>
+    <a asp-controller="Exercise" asp-action="Create" class="bg-text-color text-white px-4 py-2 rounded hover:bg-blue-700 font-semibold">Add New</a>
+</div>
+<div class="max-h-[calc(100vh-120px)] overflow-y-auto border rounded shadow">
+    <table class="min-w-full bg-white border-collapse">
+        <thead class="sticky top-0 bg-white z-10 shadow-sm">
+            <tr>
+                <th class="py-2 px-4 border-b text-left">ID</th>
+                <th class="py-2 px-4 border-b text-left">Question</th>
+                <th class="py-2 px-4 border-b text-left">Type</th>
+                <th class="py-2 px-4 border-b text-left">Lesson</th>
+                <th class="py-2 px-4 border-b text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var exercise in Model)
+            {
+                <tr>
+                    <td class="py-2 px-4 border-b">@exercise.Id</td>
+                    <td class="py-2 px-4 border-b max-w-xs truncate" title="@exercise.Question">@exercise.Question</td>
+                    <td class="py-2 px-4 border-b">
+                        @(exercise.IsMultipleChoice ? "Multiple Choice" : "Constructed Response")
+                    </td>
+                    <td class="py-2 px-4 border-b">@exercise.Lesson?.Title</td>
+                    <td class="py-2 px-4 border-b">
+                        <div class="flex justify-center gap-2">
+                            <a asp-controller="Exercise" asp-action="Edit" asp-route-id="@exercise.Id"
+                               class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded">
+                                Edit
+                            </a>
+                            <a asp-controller="Exercise" asp-action="Delete" asp-route-id="@exercise.Id"
+                               class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">
+                                Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

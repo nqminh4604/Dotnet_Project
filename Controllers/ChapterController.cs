@@ -3,6 +3,7 @@ using Dotnet_Project.Data;
 using Dotnet_Project.Models;
 using Dotnet_Project.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq;
 using Microsoft.AspNetCore.Identity;
 
@@ -179,6 +180,65 @@ namespace Dotnet_Project.Controllers
             TempData["UnlockedExerciseIndex"] = unlockedExerciseIndex;
             TempData["ExerciseResult"] = isCorrect ? "Correct!" : "Incorrect.";
             return RedirectToAction("Index", new { id = exercise.Lesson.Chapter.CourseId, selectedLessonId = exercise.LessonId, selectedExerciseId = exerciseId, openChapterIndex });
+        }
+
+        public IActionResult List()
+        {
+            var chapters = _context.Chapters.Include(c => c.Course).ToList();
+            return View(chapters);
+        }
+
+        public IActionResult Create()
+        {
+            ViewBag.CourseId = new SelectList(_context.Courses, "Id", "Name");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Chapter chapter)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Chapters.Add(chapter);
+                _context.SaveChanges();
+                return RedirectToAction("List");
+            }
+            ViewBag.CourseId = new SelectList(_context.Courses, "Id", "Name", chapter.CourseId);
+            return View(chapter);
+        }
+
+        public IActionResult Edit(long id)
+        {
+            var chapter = _context.Chapters.Find(id);
+            if (chapter == null)
+                return NotFound();
+            ViewBag.CourseId = new SelectList(_context.Courses, "Id", "Name", chapter.CourseId);
+            return View(chapter);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Chapter chapter)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Chapters.Update(chapter);
+                _context.SaveChanges();
+                return RedirectToAction("List");
+            }
+            ViewBag.CourseId = new SelectList(_context.Courses, "Id", "Name", chapter.CourseId);
+            return View(chapter);
+        }
+
+        public IActionResult Delete(long id)
+        {
+            var chapter = _context.Chapters.Find(id);
+            if (chapter == null)
+                return NotFound();
+            _context.Chapters.Remove(chapter);
+            _context.SaveChanges();
+            return RedirectToAction("List");
         }
     }
 }

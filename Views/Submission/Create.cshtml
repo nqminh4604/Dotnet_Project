@@ -1,0 +1,40 @@
+@model Dotnet_Project.Models.Submission
+@{
+    ViewData["Title"] = "Add Submission";
+    Layout = "../Shared/_AdminLayout.cshtml";
+}
+<h1 class="text-2xl font-bold text-text-color mb-4">Add New Submission</h1>
+<form asp-action="Create" method="post" class="max-w-lg bg-white p-6 rounded shadow">
+    <div class="mb-4">
+        <label asp-for="UserId" class="block font-semibold mb-1">User</label>
+        <select asp-for="UserId" class="w-full border rounded px-3 py-2" asp-items="ViewBag.UserId"></select>
+        <span asp-validation-for="UserId" class="text-red-500 text-sm"></span>
+    </div>
+    <div class="mb-4">
+        <label asp-for="ExerciseId" class="block font-semibold mb-1">Exercise</label>
+        <select asp-for="ExerciseId" class="w-full border rounded px-3 py-2" asp-items="ViewBag.ExerciseId"></select>
+        <span asp-validation-for="ExerciseId" class="text-red-500 text-sm"></span>
+    </div>
+    <div class="mb-4">
+        <label asp-for="Score" class="block font-semibold mb-1">Score</label>
+        <input asp-for="Score" class="w-full border rounded px-3 py-2" />
+        <span asp-validation-for="Score" class="text-red-500 text-sm"></span>
+    </div>
+    <div class="mb-4">
+        <label asp-for="SubmissionContent" class="block font-semibold mb-1">Submission Content</label>
+        <textarea asp-for="SubmissionContent" class="w-full border rounded px-3 py-2"></textarea>
+        <span asp-validation-for="SubmissionContent" class="text-red-500 text-sm"></span>
+    </div>
+    <div class="mb-4">
+        <label asp-for="SubmittedAt" class="block font-semibold mb-1">Submitted At</label>
+        <input asp-for="SubmittedAt" type="datetime-local" class="w-full border rounded px-3 py-2" />
+        <span asp-validation-for="SubmittedAt" class="text-red-500 text-sm"></span>
+    </div>
+    <div class="flex justify-end gap-2">
+        <a asp-action="List" class="bg-gray-400 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">Cancel</a>
+        <button type="submit" class="bg-text-color hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Save</button>
+    </div>
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

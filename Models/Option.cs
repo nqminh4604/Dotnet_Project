@@ -14,7 +14,6 @@ namespace Dotnet_Project.Models
 
         public long ExerciseId { get; set; }
 
-        public virtual Exercise Exercise { get; set; } = null!;
-
+        public virtual Exercise? Exercise { get; set; }
     }
 }
