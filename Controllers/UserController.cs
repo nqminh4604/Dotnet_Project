@@ -1,8 +1,8 @@
-
 using Dotnet_Project.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Dotnet_Project.Controllers
@@ -45,7 +45,6 @@ namespace Dotnet_Project.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public async Task<IActionResult> Edit(EditProfileViewModel model)
         {
             if (!ModelState.IsValid)
@@ -68,6 +67,22 @@ namespace Dotnet_Project.Controllers
                 ModelState.AddModelError(string.Empty, error.Description);
             }
             return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult List()
+        {
+            var users = _userManager.Users.ToList();
+            return View(users);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> View(long id)
+        {
+            var user = await _userManager.FindByIdAsync(id.ToString());
+            if (user == null)
+                return NotFound();
+            return View(user);
         }
     }
 

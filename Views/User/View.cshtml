@@ -1,0 +1,53 @@
+@model Dotnet_Project.Models.User
+@{
+    ViewData["Title"] = "User Details";
+    Layout = "../Shared/_AdminLayout.cshtml";
+}
+<div class="max-w-xl mx-auto bg-white p-6 rounded shadow">
+    <h1 class="text-2xl font-bold text-text-color mb-4">User Details</h1>
+    <dl class="divide-y divide-gray-200">
+        <div class="py-2 flex justify-between">
+            <dt class="font-semibold">ID</dt>
+            <dd>@Model.Id</dd>
+        </div>
+        <div class="py-2 flex justify-between">
+            <dt class="font-semibold">User Name</dt>
+            <dd>@Model.UserName</dd>
+        </div>
+        <div class="py-2 flex justify-between">
+            <dt class="font-semibold">Email</dt>
+            <dd>@Model.Email</dd>
+        </div>
+        <div class="py-2 flex justify-between">
+            <dt class="font-semibold">Full Name</dt>
+            <dd>@Model.FullName</dd>
+        </div>
+        <div class="py-2 flex justify-between">
+            <dt class="font-semibold">Role</dt>
+            <dd>@Model.Role</dd>
+        </div>
+        <div class="py-2 flex justify-between">
+            <dt class="font-semibold">Phone Number</dt>
+            <dd>@Model.PhoneNumber</dd>
+        </div>
+        <div class="py-2 flex justify-between">
+            <dt class="font-semibold">Created At</dt>
+            <dd>@Model.CreatedAt.ToString("g")</dd>
+        </div>
+        <div class="py-2 flex justify-between">
+            <dt class="font-semibold">Updated At</dt>
+            <dd>@Model.UpdatedAt?.ToString("g") ?? "-"</dd>
+        </div>
+        <div class="py-2 flex justify-between">
+            <dt class="font-semibold">Active</dt>
+            <dd>@(Model.IsActive ? "Yes" : "No")</dd>
+        </div>
+        <div class="py-2 flex justify-between">
+            <dt class="font-semibold">Password</dt>
+            <dd><span class="italic text-gray-400">Hidden for security</span></dd>
+        </div>
+    </dl>
+    <div class="mt-6 flex justify-end">
+        <a asp-action="List" class="bg-gray-400 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">Back to List</a>
+    </div>
+</div>
