@@ -27,10 +27,12 @@
             <span class="text-[10px] mt-1">My courses</span>
         </a>
     </div>
-    <a href="/Account/Logout" class="mt-auto flex flex-col items-center p-2 w-[67px] rounded-xl transition-all text-red-600 hover:bg-white/10">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-3A2.25 2.25 0 008.25 5.25V9m7.5 0h-15m15 0v10.5A2.25 2.25 0 0118.75 21H5.25A2.25 2.25 0 013 19.5V9m15 0V5.25A2.25 2.25 0 0013.5 3h-3A2.25 2.25 0 008.25 5.25V9" />
-        </svg>
-        <span class="text-[10px] mt-1">Logout</span>
-    </a>
+    <form asp-controller="Account" asp-action="Logout" method="post" class="w-full">
+        <button type="submit" class="mt-auto flex flex-col items-center p-2 w-[67px] rounded-xl transition-all text-red-600 hover:bg-white/10" style="background:none;border:none;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-3A2.25 2.25 0 008.25 5.25V9m7.5 0h-15m15 0v10.5A2.25 2.25 0 0118.75 21H5.25A2.25 2.25 0 013 19.5V9m15 0V5.25A2.25 2.25 0 0013.5 3h-3A2.25 2.25 0 008.25 5.25V9" />
+            </svg>
+            <span class="text-[10px] mt-1">Logout</span>
+        </button>
+    </form>
 </div>

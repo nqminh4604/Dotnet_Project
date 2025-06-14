@@ -2,9 +2,14 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @* Sidebar navigation partial with Heroicons and custom colors using Tailwind and your palette *@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Dotnet_Project.Models.User> SignInManager
+@inject UserManager<Dotnet_Project.Models.User> UserManager
 @{
-	var currentPath = Context.Request.Path.Value?.ToLower();
-	Func<string, string> NavClass = path => currentPath == path.ToLower() ? "bg-white text-text-color font-bold" : "hover:bg-white/10 text-white";
+    var currentPath = Context.Request.Path.Value?.ToLower();
+    Func<string, string> NavClass = path => currentPath == path.ToLower() ? "bg-white text-text-color font-bold" : "hover:bg-white/10 text-white";
+    var user = UserManager.GetUserAsync(User).Result;
+    var isAdmin = User.IsInRole("Admin");
 }
 <div class="flex flex-col items-start p-2 bg-text-color rounded-xl h-[98vh] m-2 w-[25vh]">
 	<a asp-controller="Course" asp-action="List" class="flex items-center p-2 w-full rounded-xl transition-all @NavClass("/Course/List")">
@@ -43,10 +48,13 @@
 		</svg>
 		<span class="text-[20px] ml-1">Submission</span>
 	</a>
-	<a href="/Account/Logout" class="mt-auto flex flex-col items-center p-2 w-full rounded-xl transition-all text-red-600 hover:bg-white/10">
-		<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-			<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-3A2.25 2.25 0 008.25 5.25V9m7.5 0h-15m15 0v10.5A2.25 2.25 0 0118.75 21H5.25A2.25 2.25 0 013 19.5V9m15 0V5.25A2.25 2.25 0 0013.5 3h-3A2.25 2.25 0 008.25 5.25V9" />
-		</svg>
-		<span class="text-[20px] ml-1">Logout</span>
-	</a>
+	<form asp-controller="Account" asp-action="Logout" method="post" class="w-full">
+		<button type="submit" class="mt-auto flex flex-col items-center p-2 w-full rounded-xl transition-all text-red-600 hover:bg-white/10" style="background:none;border:none;">
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+				<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-3A2.25 2.25 0 008.25 5.25V9m7.5 0h-15m15 0v10.5A2.25 2.25 0 0118.75 21H5.25A2.25 2.25 0 013 19.5V9m15 0V5.25A2.25 2.25 0 0013.5 3h-3A2.25 2.25 0 008.25 5.25V9" />
+			</svg>
+			<span class="text-[20px] ml-1">Logout</span>
+		</button>
+	</form>
 </div>
+
