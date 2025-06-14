@@ -59,7 +59,6 @@
             div.innerHTML = `  
                 <input type="text" class="border rounded px-2 py-1" name="Options[${idx}].Content" placeholder="Option content" value="${content}" required />  
                 <label class="flex items-center">  
-                    <input type="hidden" name="Options[${idx}].IsCorrect" value="false" />  
                     <input type="checkbox" name="Options[${idx}].IsCorrect" value="true" ${isCorrect ? 'checked' : ''}/> Is Correct  
                 </label>  
                 <button type="button" class="remove-option-btn text-red-500">Remove</button>  

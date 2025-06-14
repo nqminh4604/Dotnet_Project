@@ -25,7 +25,7 @@ namespace Dotnet_Project.Models
 
         public virtual Lesson? Lesson { get; set; }
 
-        public virtual ICollection<Option> Options { get; set; } = new List<Option>();
+        public List<Option> Options { get; set; } = new List<Option>();
 
         public virtual ICollection<Submission> Submissions { get; set; } = new List<Submission>();
     }

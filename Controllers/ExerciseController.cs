@@ -51,6 +51,13 @@ namespace Dotnet_Project.Controllers
                 {
                     _logger.LogInformation("[DEBUG] Option: Content={Content}, IsCorrect={IsCorrect}", option.Content, option.IsCorrect);
                 }
+                // Extra debug: show what model binder produced
+                int idx = 0;
+                foreach (var option in exercise.Options)
+                {
+                    _logger.LogInformation($"[DEBUG] Bound Option {idx}: Content={option.Content}, IsCorrect={option.IsCorrect}");
+                    idx++;
+                }
             }
             if (exercise.IsMultipleChoice && exercise.Options != null)
             {
