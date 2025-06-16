@@ -10,11 +10,11 @@ namespace Dotnet_Project.Models
         [StringLength(500, ErrorMessage = "Chapter title cannot be longer than 500 characters.")]
         public string Title { get; set; }
 
-        public long CourseId { get; set; }
+        [Required(ErrorMessage = "The Course field is required.")]
+        public long CourseId { get; set; } 
 
-        public virtual Course Course { get; set; } = null!;
+        public virtual Course? Course { get; set; }
 
         public virtual ICollection<Lesson> Lessons { get; set; } = new List<Lesson>();
-
     }
 }

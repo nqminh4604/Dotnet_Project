@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2EFBC5C9-8C71-4D3D-B95C-21739B4EDC37}|Dotnet_Project.csproj|d:\\eiu\\2425-q3\\cse 443\\project\\dotnet_project\\views\\exercise\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2EFBC5C9-8C71-4D3D-B95C-21739B4EDC37}|Dotnet_Project.csproj|solutionrelative:views\\exercise\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{2EFBC5C9-8C71-4D3D-B95C-21739B4EDC37}|Dotnet_Project.csproj|d:\\eiu\\2425-q3\\cse 443\\project\\dotnet_project\\views\\chapter\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2EFBC5C9-8C71-4D3D-B95C-21739B4EDC37}|Dotnet_Project.csproj|solutionrelative:views\\chapter\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2EFBC5C9-8C71-4D3D-B95C-21739B4EDC37}|Dotnet_Project.csproj|d:\\eiu\\2425-q3\\cse 443\\project\\dotnet_project\\models\\option.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2EFBC5C9-8C71-4D3D-B95C-21739B4EDC37}|Dotnet_Project.csproj|solutionrelative:models\\option.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2EFBC5C9-8C71-4D3D-B95C-21739B4EDC37}|Dotnet_Project.csproj|d:\\eiu\\2425-q3\\cse 443\\project\\dotnet_project\\views\\lesson\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2EFBC5C9-8C71-4D3D-B95C-21739B4EDC37}|Dotnet_Project.csproj|solutionrelative:views\\lesson\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EFBC5C9-8C71-4D3D-B95C-21739B4EDC37}|Dotnet_Project.csproj|d:\\eiu\\2425-q3\\cse 443\\project\\dotnet_project\\controllers\\chaptercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2EFBC5C9-8C71-4D3D-B95C-21739B4EDC37}|Dotnet_Project.csproj|solutionrelative:controllers\\chaptercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EFBC5C9-8C71-4D3D-B95C-21739B4EDC37}|Dotnet_Project.csproj|d:\\eiu\\2425-q3\\cse 443\\project\\dotnet_project\\models\\chapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2EFBC5C9-8C71-4D3D-B95C-21739B4EDC37}|Dotnet_Project.csproj|solutionrelative:models\\chapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2EFBC5C9-8C71-4D3D-B95C-21739B4EDC37}|Dotnet_Project.csproj|d:\\eiu\\2425-q3\\cse 443\\project\\dotnet_project\\models\\exercise.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,16 +27,16 @@
       "RelativeMoniker": "D:0:0:{2EFBC5C9-8C71-4D3D-B95C-21739B4EDC37}|Dotnet_Project.csproj|solutionrelative:controllers\\exercisecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2EFBC5C9-8C71-4D3D-B95C-21739B4EDC37}|Dotnet_Project.csproj|d:\\eiu\\2425-q3\\cse 443\\project\\dotnet_project\\views\\exercise\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2EFBC5C9-8C71-4D3D-B95C-21739B4EDC37}|Dotnet_Project.csproj|solutionrelative:views\\exercise\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{2EFBC5C9-8C71-4D3D-B95C-21739B4EDC37}|Dotnet_Project.csproj|d:\\eiu\\2425-q3\\cse 443\\project\\dotnet_project\\views\\exercise\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2EFBC5C9-8C71-4D3D-B95C-21739B4EDC37}|Dotnet_Project.csproj|solutionrelative:views\\exercise\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2EFBC5C9-8C71-4D3D-B95C-21739B4EDC37}|Dotnet_Project.csproj|d:\\eiu\\2425-q3\\cse 443\\project\\dotnet_project\\views\\course\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2EFBC5C9-8C71-4D3D-B95C-21739B4EDC37}|Dotnet_Project.csproj|solutionrelative:views\\course\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{2EFBC5C9-8C71-4D3D-B95C-21739B4EDC37}|Dotnet_Project.csproj|d:\\eiu\\2425-q3\\cse 443\\project\\dotnet_project\\models\\lesson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2EFBC5C9-8C71-4D3D-B95C-21739B4EDC37}|Dotnet_Project.csproj|solutionrelative:models\\lesson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2EFBC5C9-8C71-4D3D-B95C-21739B4EDC37}|Dotnet_Project.csproj|d:\\eiu\\2425-q3\\cse 443\\project\\dotnet_project\\controllers\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2EFBC5C9-8C71-4D3D-B95C-21739B4EDC37}|Dotnet_Project.csproj|solutionrelative:controllers\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2EFBC5C9-8C71-4D3D-B95C-21739B4EDC37}|Dotnet_Project.csproj|d:\\eiu\\2425-q3\\cse 443\\project\\dotnet_project\\controllers\\lessoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2EFBC5C9-8C71-4D3D-B95C-21739B4EDC37}|Dotnet_Project.csproj|solutionrelative:controllers\\lessoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -47,91 +55,111 @@
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "CourseController.cs",
-              "DocumentMoniker": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Controllers\\CourseController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CourseController.cs",
-              "ToolTip": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Controllers\\CourseController.cs",
-              "RelativeToolTip": "Controllers\\CourseController.cs",
-              "ViewState": "AgIAAGkAAAAAAAAAAABRwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T18:24:01.404Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "List.cshtml",
-              "DocumentMoniker": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Views\\Course\\List.cshtml",
-              "RelativeDocumentMoniker": "Views\\Course\\List.cshtml",
-              "ToolTip": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Views\\Course\\List.cshtml",
-              "RelativeToolTip": "Views\\Course\\List.cshtml",
-              "ViewState": "AgIAAEYAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-13T18:22:47.921Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Option.cs",
-              "DocumentMoniker": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Models\\Option.cs",
-              "RelativeDocumentMoniker": "Models\\Option.cs",
-              "ToolTip": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Models\\Option.cs",
-              "RelativeToolTip": "Models\\Option.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T16:38:21.168Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Exercise.cs",
-              "DocumentMoniker": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Models\\Exercise.cs",
-              "RelativeDocumentMoniker": "Models\\Exercise.cs",
-              "ToolTip": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Models\\Exercise.cs",
-              "RelativeToolTip": "Models\\Exercise.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAD4vwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T16:35:12.115Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ExerciseController.cs",
-              "DocumentMoniker": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Controllers\\ExerciseController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ExerciseController.cs",
-              "ToolTip": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Controllers\\ExerciseController.cs",
-              "RelativeToolTip": "Controllers\\ExerciseController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAJgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T15:22:37.818Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Views\\Exercise\\Create.cshtml",
               "RelativeDocumentMoniker": "Views\\Exercise\\Create.cshtml",
               "ToolTip": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Views\\Exercise\\Create.cshtml",
               "RelativeToolTip": "Views\\Exercise\\Create.cshtml",
-              "ViewState": "AgIAAD8AAAAAAAAAAADwvzUAAABXAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-13T15:21:51.844Z",
+              "WhenOpened": "2025-06-14T04:53:27.009Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Views\\Chapter\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Chapter\\Create.cshtml",
+              "ToolTip": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Views\\Chapter\\Create.cshtml",
+              "RelativeToolTip": "Views\\Chapter\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAABwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-14T03:55:39.029Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Views\\Exercise\\Edit.cshtml",
-              "RelativeDocumentMoniker": "Views\\Exercise\\Edit.cshtml",
-              "ToolTip": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Views\\Exercise\\Edit.cshtml",
-              "RelativeToolTip": "Views\\Exercise\\Edit.cshtml",
-              "ViewState": "AgIAAGIAAAAAAAAAAABRwGUAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Views\\Lesson\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Lesson\\Create.cshtml",
+              "ToolTip": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Views\\Lesson\\Create.cshtml",
+              "RelativeToolTip": "Views\\Lesson\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-13T15:21:50.67Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-14T03:55:54.376Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Lesson.cs",
+              "DocumentMoniker": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Models\\Lesson.cs",
+              "RelativeDocumentMoniker": "Models\\Lesson.cs",
+              "ToolTip": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Models\\Lesson.cs",
+              "RelativeToolTip": "Models\\Lesson.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-14T04:09:35.293Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Exercise.cs",
+              "DocumentMoniker": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Models\\Exercise.cs",
+              "RelativeDocumentMoniker": "Models\\Exercise.cs",
+              "ToolTip": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Models\\Exercise.cs",
+              "RelativeToolTip": "Models\\Exercise.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-14T04:09:10.764Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Chapter.cs",
+              "DocumentMoniker": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Models\\Chapter.cs",
+              "RelativeDocumentMoniker": "Models\\Chapter.cs",
+              "ToolTip": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Models\\Chapter.cs",
+              "RelativeToolTip": "Models\\Chapter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-14T03:57:41.988Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ExerciseController.cs",
+              "DocumentMoniker": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Controllers\\ExerciseController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ExerciseController.cs",
+              "ToolTip": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Controllers\\ExerciseController.cs",
+              "RelativeToolTip": "Controllers\\ExerciseController.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAswDAAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-14T04:05:23.955Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LessonController.cs",
+              "DocumentMoniker": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Controllers\\LessonController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LessonController.cs",
+              "ToolTip": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Controllers\\LessonController.cs",
+              "RelativeToolTip": "Controllers\\LessonController.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAwwBkAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-14T03:55:45.778Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ChapterController.cs",
+              "DocumentMoniker": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Controllers\\ChapterController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ChapterController.cs",
+              "ToolTip": "D:\\EIU\\2425-Q3\\CSE 443\\Project\\Dotnet_Project\\Controllers\\ChapterController.cs",
+              "RelativeToolTip": "Controllers\\ChapterController.cs",
+              "ViewState": "AgIAAMEAAAAAAAAAAAAiwM4AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-14T03:49:58.439Z"
             }
           ]
         }

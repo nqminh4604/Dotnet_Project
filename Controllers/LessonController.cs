@@ -23,21 +23,24 @@ namespace Dotnet_Project.Controllers
         public IActionResult Create()
         {
             ViewBag.ChapterId = new SelectList(_context.Chapters, "Id", "Title");
-            return View();
+            return View(new Lesson());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Lesson lesson)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _context.Lessons.Add(lesson);
-                _context.SaveChanges();
-                return RedirectToAction("List");
+                // Collect all errors for debugging
+                var allErrors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+                ViewBag.AllErrors = allErrors;
+                ViewBag.ChapterId = new SelectList(_context.Chapters, "Id", "Title", lesson.ChapterId);
+                return View(lesson);
             }
-            ViewBag.ChapterId = new SelectList(_context.Chapters, "Id", "Title", lesson.ChapterId);
-            return View(lesson);
+            _context.Lessons.Add(lesson);
+            _context.SaveChanges();
+            return RedirectToAction("List");
         }
 
         public IActionResult Edit(long id)

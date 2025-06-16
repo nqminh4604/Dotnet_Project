@@ -26,7 +26,7 @@
                 @Html.ValidationSummary(true, "", new { @class = "text-danger mb-4" })
                 <div class="md:flex">
                     <div class="flex flex-col gap-6 relative">
-                        <span class="absolute left-4 md:left-5 md:top-[30px] top-[31%] transform -translate-y-1/2 h-5 w-5 md:h-8 md:w-8 text-text-color">
+                        <span class="absolute left-4 md:left-5 md:top-[29px] top-[30%] transform -translate-y-1/2 h-5 w-5 md:h-8 md:w-8 text-text-color">
                             <!-- EnvelopeIcon SVG -->
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H4.5a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5H4.5a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-.876 1.797l-7.5 6a2.25 2.25 0 01-2.748 0l-7.5-6A2.25 2.25 0 012.25 6.993V6.75" />
@@ -35,7 +35,7 @@
                         <input asp-for="Email" class="form-control w-[270px] md:w-[500px] pl-12 py-2 border rounded-full text-lg text-text-color" placeholder="Email" type="email" required />
                         <span asp-validation-for="Email" class="text-danger"></span>
 
-                        <span class="absolute left-4 md:left-5 md:top-[80px] top-[40%] transform -translate-y-1/2 h-5 w-5 md:h-8 md:w-8 text-text-color">
+                        <span class="absolute left-4 md:left-5 md:top-[120px] top-[40%] transform -translate-y-1/2 h-5 w-5 md:h-8 md:w-8 text-text-color">
                             <!-- UserIcon SVG -->
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a8.25 8.25 0 1115 0v.41a.34.34 0 01-.34.34H4.84a.34.34 0 01-.34-.34v-.41z" />
@@ -44,7 +44,7 @@
                         <input asp-for="FullName" class="form-control w-[270px] md:w-[500px] pl-12 py-2 border rounded-full text-lg text-text-color" placeholder="Full Name" type="text" required />
                         <span asp-validation-for="FullName" class="text-danger"></span>
 
-                        <span class="absolute left-4 md:left-5 md:top-[130px] top-[53%] transform -translate-y-1/2 h-5 w-5 md:h-8 md:w-8 text-text-color">
+                        <span class="absolute left-4 md:left-5 md:top-[215px] top-[53%] transform -translate-y-1/2 h-5 w-5 md:h-8 md:w-8 text-text-color">
                             <!-- UserIcon SVG -->
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a8.25 8.25 0 1115 0v.41a.34.34 0 01-.34.34H4.84a.34.34 0 01-.34-.34v-.41z" />
@@ -53,7 +53,7 @@
                         <input asp-for="UserName" class="form-control w-[270px] md:w-[500px] pl-12 py-2 border rounded-full text-lg text-text-color" placeholder="Username" type="text" required />
                         <span asp-validation-for="UserName" class="text-danger"></span>
 
-                        <span class="absolute left-4 md:left-5 md:top-[215px] top-[75%] transform -translate-y-1/2 h-5 w-5 md:h-8 md:w-8 text-text-color">
+                        <span class="absolute left-4 md:left-5 md:top-[305px] top-[75%] transform -translate-y-1/2 h-5 w-5 md:h-8 md:w-8 text-text-color">
                             <!-- LockClosedIcon SVG -->
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V7.5a4.5 4.5 0 10-9 0v3m12 0A2.25 2.25 0 0119.5 12.75v6A2.25 2.25 0 0117.25 21H6.75A2.25 2.25 0 014.5 18.75v-6A2.25 2.25 0 016.75 10.5h10.5z" />
@@ -62,6 +62,12 @@
                         <input asp-for="Password" class="form-control w-[270px] md:w-[500px] pl-12 py-2 border rounded-full text-lg text-text-color" placeholder="Password" type="password" required minlength="6" />
                         <span asp-validation-for="Password" class="text-danger"></span>
 
+                        <span class="absolute left-4 md:left-5 md:top-[400px] top-[40%] transform -translate-y-1/2 h-5 w-5 md:h-8 md:w-8 text-text-color">
+                            <!-- UserIcon SVG -->
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a8.25 8.25 0 1115 0v.41a.34.34 0 01-.34.34H4.84a.34.34 0 01-.34-.34v-.41z" />
+                            </svg>
+                        </span>
                         <select asp-for="Role" class="form-control w-[270px] md:w-[500px] pl-12 py-2 border rounded-full text-lg text-text-color" required>
                             <option value="">Select Role</option>
                             <option value="Student">Student</option>

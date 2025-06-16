@@ -35,30 +35,7 @@ namespace Dotnet_Project.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Exercise exercise)
         {
-            // Log all posted form values for debugging
-            foreach (var key in Request.Form.Keys)
-            {
-                _logger.LogInformation($"Form POST: {key} = {Request.Form[key]}");
-            }
-            // Log the Exercise object for debugging
-            _logger.LogInformation("[DEBUG] Creating Exercise: {@Exercise}", exercise);
-            _logger.LogInformation(exercise.Id.ToString());
-            _logger.LogInformation(exercise.IsMultipleChoice.ToString());
-            _logger.LogInformation(exercise.CreatedAt.ToString());
-            if (exercise.Options != null)
-            {
-                foreach (var option in exercise.Options)
-                {
-                    _logger.LogInformation("[DEBUG] Option: Content={Content}, IsCorrect={IsCorrect}", option.Content, option.IsCorrect);
-                }
-                // Extra debug: show what model binder produced
-                int idx = 0;
-                foreach (var option in exercise.Options)
-                {
-                    _logger.LogInformation($"[DEBUG] Bound Option {idx}: Content={option.Content}, IsCorrect={option.IsCorrect}");
-                    idx++;
-                }
-            }
+            
             if (exercise.IsMultipleChoice && exercise.Options != null)
             {
                 // Remove empty options (in case user left blank rows)
@@ -69,17 +46,7 @@ namespace Dotnet_Project.Controllers
                     option.Exercise = exercise;
                 }
             }
-            if (!ModelState.IsValid)
-            {
-                foreach (var key in ModelState.Keys)
-                {
-                    var state = ModelState[key];
-                    foreach (var error in state.Errors)
-                    {
-                        _logger.LogError($"ModelState error for {key}: {error.ErrorMessage}");
-                    }
-                }
-            }
+            
             if (ModelState.IsValid)
             {
                 _context.Exercises.Add(exercise);

@@ -12,7 +12,7 @@ namespace Dotnet_Project.Models
 
         public long ChapterId { get; set; }
 
-        public virtual Chapter Chapter { get; set; } = null!;
+        public virtual Chapter? Chapter { get; set; }
 
         public virtual ICollection<Exercise> Exercises { get; set; } = new List<Exercise>();
     }

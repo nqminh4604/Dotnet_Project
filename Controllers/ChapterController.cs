@@ -191,21 +191,24 @@ namespace Dotnet_Project.Controllers
         public IActionResult Create()
         {
             ViewBag.CourseId = new SelectList(_context.Courses, "Id", "Name");
-            return View();
+            return View(new Chapter());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Chapter chapter)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _context.Chapters.Add(chapter);
-                _context.SaveChanges();
-                return RedirectToAction("List");
+                // Collect all errors for debugging
+                var allErrors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+                ViewBag.AllErrors = allErrors;
+                ViewBag.CourseId = new SelectList(_context.Courses, "Id", "Name", chapter.CourseId);
+                return View(chapter);
             }
-            ViewBag.CourseId = new SelectList(_context.Courses, "Id", "Name", chapter.CourseId);
-            return View(chapter);
+            _context.Chapters.Add(chapter);
+            _context.SaveChanges();
+            return RedirectToAction("List");
         }
 
         public IActionResult Edit(long id)
